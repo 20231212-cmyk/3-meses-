@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Meses - Cristobal y Alessandra</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Paleta de colores inspirada en el mar */
+            background: linear-gradient(135deg, #010a15 0%, #0a2e5c 40%, #1565c0 80%, #4dd0e1 100%);
+            background-attachment: fixed;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        /* Efecto de cristal para los contenedores (Glassmorphism) */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        h1, h2, .romantic-text {
+            font-family: 'Dancing Script', cursive;
+            color: #e0f7fa;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            font-size: 4em;
+            margin-top: 40px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            font-weight: 300;
+            margin-bottom: 40px;
+            color: #b3e5fc;
+        }
+
+        /* Contador */
+        .timer-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .time-box {
+            background: rgba(2, 119, 189, 0.4);
+            padding: 15px 25px;
+            border-radius: 15px;
+            min-width: 100px;
+            border: 1px solid rgba(77, 208, 225, 0.3);
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 2.5em;
+            font-weight: 600;
+        }
+
+        .time-box p {
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #81d4fa;
+        }
+
+        /* Reproductor de Música */
+        .music-player {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px 25px;
+            border-radius: 50px;
+            max-width: 400px;
+            margin: 0 auto 50px auto;
+        }
+        
+        .music-player img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        .music-info h3 { font-size: 1.1em; margin-bottom: 2px; }
+        .music-info p { font-size: 0.8em; color: #b3e5fc; }
+
+        /* Línea de tiempo */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .timeline-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        .timeline-item img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 15px;
+            border: 4px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-item img:hover {
+            transform: scale(1.05);
+        }
+
+        .timeline-content {
+            margin-top: 15px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 1.2em;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Carta de amor */
+        .love-letter {
+            font-size: 1.3em;
+            line-height: 1.8;
+            padding: 40px;
+        }
+
+        .love-letter p {
+            margin-bottom: 20px;
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2em;
+            color: #81d4fa;
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        /* Corazones flotantes de fondo */
+        .bubbles {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            background-color: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: float 10s infinite ease-in;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-1000px) scale(1.5); opacity: 0; }
+        }
+
+        /* Responsivo */
+        @media (max-width: 600px) {
+            h1 { font-size: 3em; }
+            .time-box { min-width: 70px; padding: 10px; }
+            .time-box span { font-size: 1.8em; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fondo animado -->
+    <div class="bubbles" id="bubbles"></div>
+
+    <header>
+        <h1>Cristobal y Alessandra</h1>
+        <p class="subtitle">Nuestra historia a través del mar de los días...</p>
+    </header>
+
+    <!-- Reproductor de Música -->
+    <div class="music-player">
+        <!-- Ícono simulando un disco -->
+        <img src="https://cdn-icons-png.flaticon.com/512/26/26309.png" style="filter: invert(1);" alt="Disco">
+        <div class="music-info">
+            <h3>Amor de veraNO</h3>
+            <p>La T y la M 🎵</p>
+        </div>
+    </div>
+
+    <!-- Contador de Tiempo -->
+    <div class="glass-card">
+        <h2>Tiempo siendo felices juntos</h2>
+        <div class="timer-container" id="timer">
+            <div class="time-box"><span id="days">0</span><p>Días</p></div>
+            <div class="time-box"><span id="hours">0</span><p>Horas</p></div>
+            <div class="time-box"><span id="minutes">0</span><p>Minutos</p></div>
+            <div class="time-box"><span id="seconds">0</span><p>Segundos</p></div>
+        </div>
+    </div>
+
+    <!-- Línea de tiempo -->
+    <div class="timeline">
+        <h2 class="romantic-text" style="font-size: 2.5em; margin-bottom: 40px;">Nuestros Momentos</h2>
+        
+        <div class="timeline-item">
+            <img src="image_113e13.jpg" alt="El día que le pedí">
+            <div class="timeline-content">El día que le pedí 💙</div>
+        </div>
+
+        <div class="timeline-item">
+            <img src="image_114155.jpg" alt="Primer mes juntos">
+            <div class="timeline-content">Primer mes juntos 💌</div>
+        </div>
+
+        <div class="timeline-item">
+            <img src="image_11419c.jpg" alt="Segundo mes juntos">
+            <div class="timeline-content">Segundo mes juntos 🚗✨</div>
+        </div>
+    </div>
+
+    <!-- Carta Final -->
+    <div class="glass-card love-letter">
+        <h2 class="romantic-text" style="font-size: 2.5em; margin-bottom: 20px;">Para ti...</h2>
+        <p>"Ya son 3 meses con la persona que me da paz y me alegra todos los días.</p>
+        <p>Agradecido por todo lo que tenemos y por todo lo que nos espera."</p>
+        <div class="signature">Te amo, Cristobal</div>
+    </div>
+
+    <br><br>
+
+    <script>
+        // Configurar la fecha de inicio: 3 de Julio de 2026
+        const startDate = new Date('2026-07-03T00:00:00').getTime();
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const difference = now - startDate;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = days;
+                document.getElementById('hours').innerText = hours;
+                document.getElementById('minutes').innerText = minutes;
+                document.getElementById('seconds').innerText = seconds;
+            }
+        }
+
+        // Actualizar cada segundo
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // Generar burbujas de fondo para el efecto mar
+        const bubblesContainer = document.getElementById('bubbles');
+        for (let i = 0; i < 15; i++) {
+            let bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+            let size = Math.random() * 40 + 10;
+            bubble.style.width = size + 'px';
+            bubble.style.height = size + 'px';
+            bubble.style.left = Math.random() * 100 + 'vw';
+            bubble.style.animationDuration = Math.random() * 5 + 8 + 's';
+            bubble.style.animationDelay = Math.random() * 5 + 's';
+            bubblesContainer.appendChild(bubble);
+        }
+    </script>
+</body>
+</html>
